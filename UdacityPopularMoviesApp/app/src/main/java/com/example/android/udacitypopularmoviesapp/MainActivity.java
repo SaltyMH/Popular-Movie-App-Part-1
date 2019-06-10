@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
     private MovieAdapter mAdapter;
 
-    private static final String API_KEY = "PLACE YOUR TheMovieDatabase API CODE HERE";
+    private static final String API_KEY = "273f80700ee86740c3e91184a26b199d";
 
     // TextView that is displayed when the list is empty.
     private TextView mEmptyStateTextView;
@@ -182,7 +182,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
         if (id == R.id.sort_date) {
             TheMovieDatabaseApiRequestUrl =
-                    "http://api.themoviedb.org/3/discover/movie/?vote_count.gte=100&" +
+                    "http://api.themoviedb.org/3/discover/movie?vote_count.gte=100&" +
                             "sort_by=vote_average.desc&api_key=" +
                             API_KEY;
             runSearch();
