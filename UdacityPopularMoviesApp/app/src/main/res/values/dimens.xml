@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="list_item_height">84dp</dimen>
+
+    <dimen name="list_item_padding">16dp</dimen>
+
+    <dimen name="list_item_margin">4dp</dimen>
+
+    <dimen name="list_item_text_size">12sp</dimen>
+
+    <dimen name="divider_margin">8dp</dimen>
+
+    <dimen name="divider_height">1dp</dimen>
+
+    <dimen name="grid_column_width">100dp</dimen>
+
+</resources>

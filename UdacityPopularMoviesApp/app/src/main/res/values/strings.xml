@@ -1,0 +1,34 @@
+<resources>
+
+    <string name="app_name">POPULAR MOVIES APP PART 1</string>
+
+    <string name="no_articles">No movies were found at this time.  Please refine search.</string>
+
+    <string name="no_internet_connection">No internet detected.\nPlease check connection.</string>
+
+    <string name="http_request_error">Problem making the HTTP request.</string>
+
+    <string name="install_browser">No application can handle this request. Please install a
+        web browser.</string>
+
+    <string name="detail_error_message">Movie data not available.</string>
+
+    <string name="w342_base_poster_path">http://image.tmdb.org/t/p/w342/</string>
+
+    <string name="w500_base_poster_path">http://image.tmdb.org/t/p/w500/</string>
+
+    <string name="release_date_title">Release Date:\u0020\u0020</string>
+
+    <string name="user_rating_title">User Rating:\u0020\u0020</string>
+
+    <string name="overview_title">Overview:\u0020\u0020</string>
+
+    <string name="menu_title_popular">Most Popular</string>
+
+    <string name="menu_title_rated">Highest Rated</string>
+
+    <string name="menu_title_horror">Popular Horror</string>
+
+
+
+</resources>
