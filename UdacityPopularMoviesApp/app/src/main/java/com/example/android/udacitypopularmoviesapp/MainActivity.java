@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
     private MovieAdapter mAdapter;
 
-    private static final String API_KEY = "PLACE YOUR TheMovieDatabase API KEY HERE";
+    private static final String API_KEY = "PLACE YOUR TheMovieDatabase API CODE HERE";
 
     // TextView that is displayed when the list is empty.
     private TextView mEmptyStateTextView;
