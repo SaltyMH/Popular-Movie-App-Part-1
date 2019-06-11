@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
     private MovieAdapter mAdapter;
 
-    private static final String API_KEY = "273f80700ee86740c3e91184a26b199d";
+    private static final String API_KEY = "PLACE YOUR TheMovieDatabase API KEY HERE";
 
     // TextView that is displayed when the list is empty.
     private TextView mEmptyStateTextView;
@@ -36,49 +36,10 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
     // Initial URL when loading app.
     private String TheMovieDatabaseApiRequestUrl =
-            "http://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=" +
-                    API_KEY;
+            "https://api.themoviedb.org/3/movie/popular?api_key=" + API_KEY +
+                    "&language=en-US&page=1";
 
     private static final int ARTICLE_LOADER_ID = 1;
-
-    // The next three methods are REQUIRED when implementing Loaders:  onCreateLoader,
-    // onLoadFinished, and onLoaderReset.
-    @Override
-    public Loader<List<Movie>> onCreateLoader(int i, Bundle bundle) {
-
-        // Find spinner and make it visible while loader is running.
-        mLoadingSpinner = (ProgressBar) findViewById(R.id.loading_spinner);
-        mLoadingSpinner.setVisibility(View.VISIBLE);
-
-        // Create a new loader for the given URL
-        return new MovieLoader(this, TheMovieDatabaseApiRequestUrl);
-    }
-
-    @Override
-    public void onLoadFinished(Loader<List<Movie>> loader, List<Movie> movies) {
-
-        // Find spinner and hide it once loader his finished task.
-        mLoadingSpinner = (ProgressBar) findViewById(R.id.loading_spinner);
-        mLoadingSpinner.setVisibility(View.GONE);
-
-        // Clear the adapter of previous movie data.
-        mAdapter.clear();
-
-        // If there is a valid list of Movies, then add them to the adapter's data set.
-        // This will trigger the ListView to update.
-        if (movies != null && !movies.isEmpty()) {
-            mAdapter.addAll(movies);
-        }
-    }
-
-    @Override
-    public void onLoaderReset(Loader<List<Movie>> loader) {
-
-        // Loader reset, so we can clear out our existing data.
-        mAdapter.clear();
-
-        mEmptyStateTextView.setVisibility(View.GONE);
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -145,6 +106,45 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         });
     }
 
+    // The next three methods are REQUIRED when implementing Loaders:  onCreateLoader,
+    // onLoadFinished, and onLoaderReset.
+    @Override
+    public Loader<List<Movie>> onCreateLoader(int i, Bundle bundle) {
+
+        // Find spinner and make it visible while loader is running.
+        mLoadingSpinner = (ProgressBar) findViewById(R.id.loading_spinner);
+        mLoadingSpinner.setVisibility(View.VISIBLE);
+
+        // Create a new loader for the given URL
+        return new MovieLoader(this, TheMovieDatabaseApiRequestUrl);
+    }
+
+    @Override
+    public void onLoadFinished(Loader<List<Movie>> loader, List<Movie> movies) {
+
+        // Find spinner and hide it once loader his finished task.
+        mLoadingSpinner = (ProgressBar) findViewById(R.id.loading_spinner);
+        mLoadingSpinner.setVisibility(View.GONE);
+
+        // Clear the adapter of previous movie data.
+        mAdapter.clear();
+
+        // If there is a valid list of Movies, then add them to the adapter's data set.
+        // This will trigger the ListView to update.
+        if (movies != null && !movies.isEmpty()) {
+            mAdapter.addAll(movies);
+        }
+    }
+
+    @Override
+    public void onLoaderReset(Loader<List<Movie>> loader) {
+
+        // Loader reset, so we can clear out our existing data.
+        mAdapter.clear();
+
+        mEmptyStateTextView.setVisibility(View.GONE);
+    }
+
     // Method to send the necessary movie information to DetailActivity as extras via intent.
     private void launchDetailActivity(int position, String poster, String title, String date,
                                       String rating, String overview) {
@@ -174,26 +174,16 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
         if (id == R.id.sort_popular) {
             TheMovieDatabaseApiRequestUrl =
-                    "http://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=" +
-                            API_KEY;
+                    "https://api.themoviedb.org/3/movie/popular?api_key=" + API_KEY +
+                            "&language=en-US&page=1";
             runSearch();
             return true;
         }
 
-        if (id == R.id.sort_date) {
+        if (id == R.id.sort_rated) {
             TheMovieDatabaseApiRequestUrl =
-                    "http://api.themoviedb.org/3/discover/movie?vote_count.gte=100&" +
-                            "sort_by=vote_average.desc&api_key=" +
-                            API_KEY;
-            runSearch();
-            return true;
-        }
-
-        if (id == R.id.sort_alphabetical) {
-            TheMovieDatabaseApiRequestUrl =
-                    "http://api.themoviedb.org/3/discover/movie?with_genres=27&" +
-                            "sort_by=popularity.desc&api_key=" +
-                            API_KEY;
+                    "https://api.themoviedb.org/3/movie/top_rated?api_key=" + API_KEY +
+                            "&language=en-US&page=1";
             runSearch();
             return true;
         }
